@@ -1,0 +1,13 @@
+#!/bin/bash
+
+del=$(git status -b)
+dels=(${del// / })
+delsa=${dels[2]}
+
+if test "$delsa" = "master"
+then
+cd CasosAcadAppMvn
+mvn package
+else
+echo "no es master. así que no se va a costruir el maven"
+ fi
