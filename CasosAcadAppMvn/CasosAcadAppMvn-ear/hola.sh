@@ -11,6 +11,6 @@ echo "Los servicios se han detenido correctamente. Re-lanzando el servidor.\n Es
 bash startup.sh &&\			
 echo "Los servicios se han lanzado correctamente."
 else
-	echo "Error al compilar las imágenes del docker-compose. No se ha modificado El servidor."
+echo "Error al compilar las imágenes del docker-compose. No se ha modificado El servidor."
 fi
 cd $d
