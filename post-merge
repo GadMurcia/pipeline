@@ -1,5 +1,5 @@
 #!/bin/bash
-
+d1=$PWD
 del=$(git status -b)
 dels=(${del// / })
 delsa=${dels[2]}
@@ -11,3 +11,4 @@ mvn package
 else
 echo "No es master. así que no se va a construir el maven"
  fi
+cd $d
