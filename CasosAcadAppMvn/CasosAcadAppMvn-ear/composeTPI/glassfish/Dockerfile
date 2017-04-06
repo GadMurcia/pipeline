@@ -54,4 +54,4 @@ COPY	deployapp.sh etc/init.d/deploy
 EXPOSE 4848 8080 8181 9009
 
 # Start asadmin console and the domain
-ENTRYPOINT	sh /etc/init.d/deploy
+ENTRYPOINT	sh /etc/init.d/deploy && asadmin start-domain -v
