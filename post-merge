@@ -1,4 +1,5 @@
 #!/bin/bash
+echjo "post-merge"
 d1=$PWD
 del=$(git status -b)
 dels=(${del// / })
