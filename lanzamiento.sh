@@ -20,5 +20,5 @@ then
 cd CasosAcadAppMvn
 mvn package
 else
-echo "no es master. así que no se va a costruir el maven"
+echo "No es master. así que no se va a costruir el maven"
  fi
