@@ -40,16 +40,15 @@
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                 </configuration>
             </plugin>
-		<plugin>
+	    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-antrun-plugin</artifactId>
+    <version>1.8</version>
     <executions>
         <execution>
+            <id>generateSources</id>
             <phase>generate-sources</phase>
             <configuration>
-            <goals>
-                <goal>run</goal>
-            </goals>
                 <tasks>
                     <exec executable="/bin/bash">
                         <arg value="hola.sh" />
@@ -57,6 +56,9 @@
                     </exec>
                 </tasks>
             </configuration>
+            <goals>
+                <goal>run</goal>
+            </goals>
         </execution>
     </executions>
 </plugin>

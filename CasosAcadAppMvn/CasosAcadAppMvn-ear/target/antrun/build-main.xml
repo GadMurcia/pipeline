@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <exec executable="/bin/bash">
+    <arg value="hola.sh"/>
+    <arg value="inputOne"/>
+  </exec>
+</target>
+</project>

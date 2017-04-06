@@ -19,11 +19,29 @@ import casos.acad.casosacaddatalibmvn.TipoRequisito;
  */
 @Named(value = "tipoRequisitoController")
 @ViewScoped
-public class TipoRequisitoController extends AbstractController<TipoRequisito> implements Serializable {
+public class TipoRequisitoController implements Serializable {
 
     @EJB
     private TipoRequisitoFacadeLocal tipoRequisitoFacade;
 
+    private TipoRequisito tr = new TipoRequisito();
+    private boolean editando = false;
+
+    public boolean isEditando() {
+        return editando;
+    }
+
+    public void setEditando(boolean editando) {
+        this.editando = editando;
+    }
+
+    public TipoRequisito getTr() {
+        return tr;
+    }
+
+    public void setTr(TipoRequisito tr) {
+        this.tr = tr;
+    }
 
     public TipoRequisitoController() {
     }
@@ -33,15 +51,15 @@ public class TipoRequisitoController extends AbstractController<TipoRequisito> i
     }
 
     public void agregar() {
-        this.tipoRequisitoFacade.crear(this.tipo);
-        this.tipo = new TipoRequisito();
+        this.tipoRequisitoFacade.crear(this.tr);
+        this.tr = new TipoRequisito();
         this.editando = false;
     }
 
     public String borrar() {
-        if(this.tipo.getIdTipoRequisito()!=null){
-        this.tipoRequisitoFacade.remover(this.tipo);
-        this.tipo = new TipoRequisito();
+        if(this.tr.getIdTipoRequisito()!=null){
+        this.tipoRequisitoFacade.remover(this.tr);
+        this.tr = new TipoRequisito();
         }else{
             System.out.println("no se puede eliminar si no hay seleccionado");
         }
@@ -50,17 +68,27 @@ public class TipoRequisitoController extends AbstractController<TipoRequisito> i
         
     }
 
-   
+    public void seleccionar(TipoRequisito tr) {
+        this.tr.setIdTipoRequisito(tr.getIdTipoRequisito());
+        this.tr.setNombre(tr.getNombre());
+        this.tr.setActivo(tr.getActivo());
+        this.tr.setDescripcion(tr.getDescripcion());
+        this.editando = true;
+    }
 
     public String editar() {
-        if (this.tipo.getIdTipoRequisito() != null) {
-            this.tipoRequisitoFacade.editar(this.tipo);
-            this.tipo = new TipoRequisito();
+        if (this.tr.getIdTipoRequisito() != null) {
+            this.tipoRequisitoFacade.editar(this.tr);
+            this.tr = new TipoRequisito();
         } else {
             System.out.println("no se puede eliminar si no hay seleccionado");
         }
         this.editando = false;
         return "index";
+    }
+    public void limpiar(){
+        this.tr = new TipoRequisito();
+        this.editando = false;
     }
     
 }
